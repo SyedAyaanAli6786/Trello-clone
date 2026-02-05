@@ -1,0 +1,492 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 80px;
+    z-index: 1000;
+    animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.modal {
+    background-color: #282e33;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 340px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.2s ease-out;
+    position: relative;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.closeButton {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9fadbc;
+    font-size: 20px;
+    transition: all 0.2s ease;
+    z-index: 10;
+}
+
+.closeButton:hover {
+    background-color: #22272b;
+    color: #b6c2cf;
+}
+
+.header {
+    padding: 16px 20px 12px;
+    text-align: center;
+}
+
+.title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #b6c2cf;
+    margin: 0;
+}
+
+.form {
+    padding: 0 20px 20px;
+}
+
+/* Board Preview */
+.previewSection {
+    margin-bottom: 16px;
+}
+
+.boardPreview {
+    width: 100%;
+    height: 120px;
+    border-radius: 8px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    gap: 8px;
+    padding: 12px;
+    position: relative;
+}
+
+.previewList {
+    flex: 1;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 6px;
+    min-width: 0;
+}
+
+/* Background Selection */
+.formGroup {
+    margin-bottom: 16px;
+}
+
+.label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: #b6c2cf;
+    margin-bottom: 8px;
+}
+
+.required {
+    color: #f87168;
+}
+
+.backgroundGrid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+}
+
+.backgroundOption {
+    aspect-ratio: 16 / 10;
+    border-radius: 6px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    background-size: cover;
+    background-position: center;
+    transition: all 0.2s ease;
+    padding: 0;
+}
+
+.backgroundOption:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.selectedBackground {
+    border-color: #579dff !important;
+    box-shadow: 0 0 0 2px #579dff;
+}
+
+.moreBackgroundsButton {
+    aspect-ratio: 16 / 10;
+    border-radius: 6px;
+    border: 2px solid transparent;
+    background-color: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #b6c2cf;
+    font-size: 20px;
+    transition: all 0.2s ease;
+}
+
+.moreBackgroundsButton:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Board Title Input */
+.input {
+    width: 100%;
+    padding: 10px 12px;
+    background-color: #22272b;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    color: #b6c2cf;
+    font-size: 14px;
+    font-family: inherit;
+    transition: all 0.2s ease;
+}
+
+.input:focus {
+    outline: none;
+    border-color: #579dff;
+    background-color: #1d2125;
+}
+
+.inputError {
+    border-color: #f87168 !important;
+}
+
+.errorMessage {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 6px;
+    color: #b6c2cf;
+    font-size: 12px;
+}
+
+.errorIcon {
+    font-size: 14px;
+}
+
+/* Visibility Selector */
+.visibilityWrapper {
+    position: relative;
+}
+
+.visibilityButton {
+    width: 100%;
+    padding: 10px 12px;
+    background-color: #22272b;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    color: #b6c2cf;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.2s ease;
+}
+
+.visibilityButton:hover {
+    background-color: #1d2125;
+    border-color: rgba(255, 255, 255, 0.16);
+}
+
+.dropdownArrow {
+    font-size: 10px;
+    color: #9fadbc;
+}
+
+.visibilityDropdown {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    background-color: #282e33;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+    overflow: hidden;
+    animation: slideDown 0.15s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.visibilityOption {
+    width: 100%;
+    padding: 12px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    text-align: left;
+    transition: background-color 0.2s ease;
+    border-left: 2px solid transparent;
+}
+
+.visibilityOption:hover {
+    background-color: #22272b;
+}
+
+.selectedVisibility {
+    background-color: #1c2b41;
+    border-left-color: #579dff;
+}
+
+.visibilityIcon {
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.visibilityContent {
+    flex: 1;
+}
+
+.visibilityLabel {
+    font-size: 14px;
+    font-weight: 600;
+    color: #b6c2cf;
+    margin-bottom: 4px;
+}
+
+.visibilityDescription {
+    font-size: 12px;
+    color: #9fadbc;
+    line-height: 1.4;
+}
+
+/* Create Button */
+.createButton {
+    width: 100%;
+    padding: 10px 16px;
+    background-color: #579dff;
+    color: #1d2125;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-bottom: 12px;
+}
+
+.createButton:hover:not(:disabled) {
+    background-color: #85b8ff;
+}
+
+.createButton:disabled {
+    background-color: #a6c5e229;
+    color: #9fadbc;
+    cursor: not-allowed;
+}
+
+/* Template Button */
+.templateButton {
+    width: 100%;
+    padding: 10px 16px;
+    background-color: transparent;
+    color: #9fadbc;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.templateButton:hover {
+    background-color: #22272b;
+    color: #b6c2cf;
+}
+
+/* Background Expansion Panel */
+.backgroundPanel {
+    position: absolute;
+    top: 0;
+    right: -320px;
+    width: 300px;
+    height: 100%;
+    background-color: #282e33;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    overflow-y: auto;
+    animation: slideInRight 0.2s ease-out;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.panelHeader {
+    padding: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.panelTitle {
+    font-size: 14px;
+    font-weight: 600;
+    color: #b6c2cf;
+    margin: 0;
+}
+
+.panelClose {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9fadbc;
+    font-size: 20px;
+    transition: all 0.2s ease;
+}
+
+.panelClose:hover {
+    background-color: #22272b;
+    color: #b6c2cf;
+}
+
+.panelSection {
+    padding: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.panelSectionHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #b6c2cf;
+}
+
+.viewMoreButton {
+    background: none;
+    border: none;
+    color: #579dff;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.2s ease;
+}
+
+.viewMoreButton:hover {
+    color: #85b8ff;
+}
+
+.panelGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.panelBackgroundOption {
+    aspect-ratio: 16 / 10;
+    border-radius: 6px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    background-size: cover;
+    background-position: center;
+    transition: all 0.2s ease;
+    padding: 0;
+}
+
+.panelBackgroundOption:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.selectedPanelBackground {
+    border-color: #579dff !important;
+    box-shadow: 0 0 0 2px #579dff;
+}
+
+/* Scrollbar Styling */
+.modal::-webkit-scrollbar,
+.backgroundPanel::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal::-webkit-scrollbar-track,
+.backgroundPanel::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.modal::-webkit-scrollbar-thumb,
+.backgroundPanel::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+.modal::-webkit-scrollbar-thumb:hover,
+.backgroundPanel::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}

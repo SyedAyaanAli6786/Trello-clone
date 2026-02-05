@@ -1,0 +1,107 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Board {
+  id              Int      @id @default(autoincrement())
+  title           String
+  backgroundColor String   @default("#0079bf") @map("background_color")
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+  lists           List[]
+
+  @@map("boards")
+}
+
+model List {
+  id        Int      @id @default(autoincrement())
+  boardId   Int      @map("board_id")
+  title     String
+  position  Int
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  board     Board    @relation(fields: [boardId], references: [id], onDelete: Cascade)
+  cards     Card[]
+
+  @@map("lists")
+}
+
+model Card {
+  id             Int             @id @default(autoincrement())
+  listId         Int             @map("list_id")
+  title          String
+  description    String?         @db.Text
+  position       Int
+  dueDate        DateTime?       @map("due_date")
+  completed      Boolean         @default(false)
+  archived       Boolean         @default(false)
+  createdAt      DateTime        @default(now()) @map("created_at")
+  updatedAt      DateTime        @updatedAt @map("updated_at")
+  list           List            @relation(fields: [listId], references: [id], onDelete: Cascade)
+  cardLabels     CardLabel[]
+  cardMembers    CardMember[]
+  checklistItems ChecklistItem[]
+
+  @@map("cards")
+}
+
+model Label {
+  id         Int         @id @default(autoincrement())
+  name       String
+  color      String
+  cardLabels CardLabel[]
+
+  @@map("labels")
+}
+
+model CardLabel {
+  id      Int   @id @default(autoincrement())
+  cardId  Int   @map("card_id")
+  labelId Int   @map("label_id")
+  card    Card  @relation(fields: [cardId], references: [id], onDelete: Cascade)
+  label   Label @relation(fields: [labelId], references: [id], onDelete: Cascade)
+
+  @@unique([cardId, labelId])
+  @@map("card_labels")
+}
+
+model Member {
+  id          Int          @id @default(autoincrement())
+  name        String
+  avatarUrl   String?      @map("avatar_url")
+  email       String       @unique
+  cardMembers CardMember[]
+
+  @@map("members")
+}
+
+model CardMember {
+  id       Int    @id @default(autoincrement())
+  cardId   Int    @map("card_id")
+  memberId Int    @map("member_id")
+  card     Card   @relation(fields: [cardId], references: [id], onDelete: Cascade)
+  member   Member @relation(fields: [memberId], references: [id], onDelete: Cascade)
+
+  @@unique([cardId, memberId])
+  @@map("card_members")
+}
+
+model ChecklistItem {
+  id        Int      @id @default(autoincrement())
+  cardId    Int      @map("card_id")
+  title     String
+  completed Boolean  @default(false)
+  position  Int
+  createdAt DateTime @default(now()) @map("created_at")
+  card      Card     @relation(fields: [cardId], references: [id], onDelete: Cascade)
+
+  @@map("checklist_items")
+}

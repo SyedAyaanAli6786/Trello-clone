@@ -1,0 +1,419 @@
+.modal {
+    background: var(--color-bg-list);
+    border-radius: var(--radius-lg);
+    width: 100%;
+    max-width: 768px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    margin-top: var(--spacing-xl);
+}
+
+.closeButton {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    background: transparent;
+    color: var(--color-text-secondary);
+    font-size: 24px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    z-index: 1;
+}
+
+.closeButton:hover {
+    background: rgba(0, 0, 0, 0.1);
+    color: var(--color-text-primary);
+}
+
+.modalHeader {
+    padding: var(--spacing-xl);
+    padding-bottom: var(--spacing-md);
+}
+
+.titleSection {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+}
+
+.icon {
+    font-size: 24px;
+    margin-top: 4px;
+}
+
+.titleInput {
+    flex: 1;
+    font-size: 20px;
+    font-weight: 600;
+    border: none;
+    background: transparent;
+    padding: var(--spacing-xs);
+    border-radius: var(--radius-sm);
+    transition: background var(--transition-fast);
+}
+
+.titleInput:hover,
+.titleInput:focus {
+    background: rgba(0, 0, 0, 0.06);
+}
+
+.listName {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    margin-left: 40px;
+}
+
+.modalBody {
+    display: grid;
+    grid-template-columns: 1fr 200px;
+    gap: var(--spacing-lg);
+    padding: 0 var(--spacing-xl) var(--spacing-xl);
+}
+
+.mainContent {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.sectionTitle {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.labelsContainer {
+    display: flex;
+    gap: var(--spacing-xs);
+    flex-wrap: wrap;
+}
+
+.labelBadge {
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--radius-sm);
+    color: var(--color-text-light);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.dueDateDisplay {
+    background: var(--color-bg-card);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    display: inline-block;
+}
+
+.descriptionDisplay {
+    background: rgba(0, 0, 0, 0.04);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    min-height: 80px;
+    cursor: pointer;
+    transition: background var(--transition-fast);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.descriptionDisplay:hover {
+    background: rgba(0, 0, 0, 0.08);
+}
+
+.descriptionTextarea {
+    width: 100%;
+    padding: var(--spacing-md);
+    border: 2px solid var(--color-primary);
+    border-radius: var(--radius-md);
+    font-size: 14px;
+    resize: vertical;
+    font-family: inherit;
+}
+
+.descriptionActions {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-sm);
+}
+
+.saveButton,
+.addButton {
+    background: var(--color-primary);
+    color: var(--color-text-light);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.saveButton:hover,
+.addButton:hover {
+    background: var(--color-primary-dark);
+}
+
+.cancelButton {
+    background: transparent;
+    color: var(--color-text-secondary);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+}
+
+.cancelButton:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.checklistProgress {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+}
+
+.progressBar {
+    flex: 1;
+    height: 8px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progressFill {
+    height: 100%;
+    background: var(--color-success);
+    transition: width var(--transition-normal);
+}
+
+.progressText {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    font-weight: 600;
+}
+
+.checklistItems {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.checklistItem {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm);
+    background: rgba(0, 0, 0, 0.04);
+    border-radius: var(--radius-sm);
+}
+
+.checkbox {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.completedItem {
+    text-decoration: line-through;
+    color: var(--color-text-secondary);
+}
+
+.deleteItemButton {
+    margin-left: auto;
+    background: transparent;
+    color: var(--color-text-secondary);
+    font-size: 16px;
+    padding: var(--spacing-xs);
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+}
+
+.deleteItemButton:hover {
+    background: rgba(0, 0, 0, 0.1);
+    color: var(--color-danger);
+}
+
+.addItemForm {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-sm);
+}
+
+.addItemInput {
+    padding: var(--spacing-sm);
+    border: 2px solid var(--color-primary);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+}
+
+.addItemActions {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.addItemButton {
+    background: rgba(0, 0, 0, 0.04);
+    color: var(--color-text-secondary);
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    text-align: left;
+    margin-top: var(--spacing-sm);
+}
+
+.addItemButton:hover {
+    background: rgba(0, 0, 0, 0.08);
+    color: var(--color-text-primary);
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.sidebarTitle {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: var(--spacing-md);
+}
+
+.sidebarSection {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.sidebarSectionTitle {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.labelsList,
+.membersList {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.labelOption {
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    color: var(--color-text-light);
+    font-size: 14px;
+    font-weight: 600;
+    text-align: left;
+}
+
+.labelOption:hover {
+    opacity: 0.9;
+}
+
+.memberOption {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm);
+    background: var(--color-bg-card);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    text-align: left;
+}
+
+.memberOption:hover {
+    background: #e4e6ea;
+}
+
+.memberAvatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+.dateInput {
+    padding: var(--spacing-sm);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+}
+
+.removeDateButton {
+    background: transparent;
+    color: var(--color-text-secondary);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    font-size: 12px;
+    text-align: left;
+}
+
+.removeDateButton:hover {
+    background: rgba(0, 0, 0, 0.1);
+    color: var(--color-danger);
+}
+
+.actionButton {
+    background: var(--color-bg-card);
+    color: var(--color-text-primary);
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    text-align: left;
+}
+
+.actionButton:hover {
+    background: #e4e6ea;
+}
+
+.deleteButton {
+    background: var(--color-danger);
+    color: var(--color-text-light);
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.deleteButton:hover {
+    background: #c9372c;
+}
+
+@media (max-width: 768px) {
+    .modal {
+        max-width: 100%;
+        margin: 0;
+        border-radius: 0;
+        max-height: 100vh;
+    }
+
+    .modalBody {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        order: 2;
+    }
+}

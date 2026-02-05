@@ -1,0 +1,12 @@
+# Dependencies
+node_modules
+
+# Misc
+.DS_Store
+*.log
+tmp/
+
+# IDE
+.vscode
+.idea
+*.swp

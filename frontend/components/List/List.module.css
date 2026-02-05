@@ -1,0 +1,531 @@
+.list {
+    width: var(--list-width);
+    min-width: var(--list-width);
+    max-width: var(--list-width);
+    background-color: rgba(0, 0, 0, 0.32);
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12);
+    flex-shrink: 0;
+    transition: background-color var(--transition-fast);
+}
+
+.list:hover {
+    background-color: rgba(0, 0, 0, 0.36);
+}
+
+.listHeader {
+    padding: 10px 8px;
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    flex-shrink: 0;
+}
+
+.listTitle {
+    flex: 1;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    color: var(--text-white);
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    border: 2px solid transparent;
+    background-color: transparent;
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 20px;
+}
+
+.listTitle:hover {
+    background-color: rgba(255, 255, 255, 0.16);
+}
+
+.listTitle:focus {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    border-color: var(--color-primary);
+    cursor: text;
+}
+
+.listTitleInput {
+    flex: 1;
+    color: var(--text-white);
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    border: 2px solid var(--color-primary);
+    background-color: var(--bg-primary);
+    outline: none;
+    box-shadow: 0 0 0 1px var(--color-primary);
+    line-height: 20px;
+}
+
+.listMenu {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: none;
+    border-radius: var(--radius-sm);
+    background-color: transparent;
+    color: var(--text-white);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: background-color var(--transition-fast);
+    flex-shrink: 0;
+}
+
+.listMenu:hover {
+    background-color: rgba(255, 255, 255, 0.16);
+}
+
+.cardsContainer {
+    padding: 0 8px;
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    min-height: 0;
+}
+
+.cardsContainer::-webkit-scrollbar {
+    width: 8px;
+}
+
+.cardsContainer::-webkit-scrollbar-track {
+    background: transparent;
+    margin: 8px 0;
+}
+
+.cardsContainer::-webkit-scrollbar-thumb {
+    background-color: rgba(9, 30, 66, 0.13);
+    border-radius: 4px;
+}
+
+.cardsContainer::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(9, 30, 66, 0.25);
+}
+
+.addCardButton {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: var(--radius-md);
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    font-family: var(--font-family);
+    cursor: pointer;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    transition: background-color var(--transition-fast);
+}
+
+.addCardButton:hover {
+    background-color: rgba(255, 255, 255, 0.16);
+    color: var(--text-white);
+}
+
+.addCardForm {
+    padding: 0 8px 8px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.addCardTextarea {
+    width: 100%;
+    min-height: 54px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-base);
+    font-family: var(--font-family);
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+    box-shadow: var(--shadow-card);
+    resize: none;
+    outline: none;
+    line-height: var(--line-height-normal);
+}
+
+.addCardTextarea:focus {
+    box-shadow: 0 0 0 2px var(--color-primary);
+}
+
+.addCardActions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
+.addCardSubmit {
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    background-color: var(--color-primary);
+    color: var(--text-white);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    border: none;
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+}
+
+.addCardSubmit:hover {
+    background-color: var(--color-primary-hover);
+}
+
+.addCardSubmit:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.addCardCancel {
+    padding: 6px;
+    border-radius: var(--radius-sm);
+    background-color: transparent;
+    color: var(--text-secondary);
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-fast);
+    width: 32px;
+    height: 32px;
+}
+
+.addCardCancel:hover {
+    background-color: rgba(9, 30, 66, 0.08);
+    color: var(--text-primary);
+}
+
+/* Drag and Drop States */
+.list.isDragging {
+    opacity: 0.5;
+    transform: rotate(2deg);
+}
+
+.cardsContainer.isDraggingOver {
+    background-color: rgba(9, 30, 66, 0.04);
+    border-radius: var(--radius-md);
+}
+
+/* Empty state */
+.cardsContainer:empty {
+    min-height: 8px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .listHeader {
+        padding: 8px 6px;
+    }
+
+    .cardsContainer {
+        padding: 0 6px;
+    }
+
+    .addCardButton,
+    .addCardForm {
+        margin: 6px;
+        padding: 0 6px 6px 6px;
+    }
+}
+
+/* List Header Actions */
+.listHeaderActions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Collapse Button */
+.collapseButtonWrapper {
+    position: relative;
+}
+
+.collapseButton {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: none;
+    border-radius: var(--radius-sm);
+    background-color: transparent;
+    color: var(--text-white);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color var(--transition-fast);
+    flex-shrink: 0;
+}
+
+.collapseButton:hover {
+    background-color: rgba(255, 255, 255, 0.16);
+}
+
+/* Collapsed List State */
+.listCollapsed {
+    width: 40px !important;
+    min-width: 40px !important;
+    max-width: 40px !important;
+    transition: width 0.3s ease, min-width 0.3s ease, max-width 0.3s ease;
+}
+
+.collapsedContainer {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px 0;
+}
+
+.collapsedHeader {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: grab;
+}
+
+.collapsedTitle {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    color: var(--text-white);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 200px;
+}
+
+/* Expand Button */
+.expandButtonWrapper {
+    position: relative;
+    margin-top: 8px;
+}
+
+.expandButton {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: none;
+    border-radius: var(--radius-sm);
+    background-color: rgba(255, 255, 255, 0.2);
+    color: var(--text-white);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color var(--transition-fast);
+}
+
+.expandButton:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Actions Menu */
+.actionsMenuWrapper {
+    position: relative;
+}
+
+.actionsDropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    width: 304px;
+    background-color: #282e33;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+    animation: slideDown 0.15s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dropdownHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    height: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+    font-size: 14px;
+    font-weight: 600;
+    color: #b6c2cf;
+}
+
+.closeDropdown {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9fadbc;
+    font-size: 20px;
+    transition: all 0.2s ease;
+}
+
+.closeDropdown:hover {
+    background-color: #22272b;
+    color: #b6c2cf;
+}
+
+.dropdownContent {
+    padding: 8px 0;
+}
+
+.menuItem {
+    width: 100%;
+    padding: 8px 12px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    font-size: 14px;
+    color: #b6c2cf;
+    font-family: var(--font-family);
+    transition: background-color 0.2s ease;
+}
+
+.menuItem:hover {
+    background-color: #22272b;
+}
+
+.menuDivider {
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.08);
+    margin: 4px 0;
+}
+
+.premiumBadge {
+    background-color: #5e4db2;
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 3px;
+    letter-spacing: 0.5px;
+}
+
+.chevronRight {
+    font-size: 18px;
+    color: #9fadbc;
+}
+
+/* Tooltips */
+.tooltip {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #1d2125;
+    color: #b6c2cf;
+    padding: 6px 10px;
+    border-radius: 3px;
+    font-size: 12px;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 1000;
+    animation: fadeIn 0.15s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.expandButtonWrapper .tooltip {
+    left: auto;
+    right: calc(100% + 8px);
+    bottom: 50%;
+    transform: translateY(50%);
+}
+
+/* Smooth transitions */
+.list {
+    transition: width 0.3s ease, min-width 0.3s ease, max-width 0.3s ease, background-color var(--transition-fast);
+}
+
+.backButton {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9fadbc;
+    font-size: 20px;
+    transition: all 0.2s ease;
+}
+
+.backButton:hover {
+    background-color: #22272b;
+    color: #b6c2cf;
+}
+
+.confirmContent {
+    padding: 12px;
+    color: #b6c2cf;
+}
+
+.confirmText {
+    margin-bottom: 16px;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.confirmButton {
+    width: 100%;
+    padding: 8px 12px;
+    background-color: #f87462;
+    color: #1d2125;
+    border: none;
+    border-radius: 3px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.confirmButton:hover {
+    background-color: #e06857;
+}
