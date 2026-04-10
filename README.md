@@ -1,4 +1,4 @@
-# Trello Clone - Project Management Tool
+# Trello-style Task Management System
 
 A full-stack Kanban-style project management web application that closely replicates Trello's design and user experience. Built with Next.js, Express, and PostgreSQL.
 
